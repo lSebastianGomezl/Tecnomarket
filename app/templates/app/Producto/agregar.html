@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h2>Nuevo Producto</h2>
                         <hr>
-                <form action="" method="">
+                <form action="" method="post" enctype="multipart/form-data">
 
                     {% csrf_token %}
                     {{ form | crispy }}
@@ -25,7 +25,7 @@
 
 
                 </form>
-
+                {{ mensaje }}
             </div>
         </div>
 

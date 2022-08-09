@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'tecnomarket',
         'USER': 'root',
-        'PASSWORD': '123456789',
+        'PASSWORD': 'Sena1234',
         'HOST': 'localhost',
         'PORT': '',
     }

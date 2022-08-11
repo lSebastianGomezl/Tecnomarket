@@ -32,14 +32,47 @@
                         <a href="{% url 'contacto' %}">Contacto</a>
                     </li>
                     <li><a href="{% url 'galeria' %}">Galería</a></li>
-                </ul>
+                    {% if perms.app.add_producto %}
+                    <li>
+                        <a href="{% url 'agregar_producto' %}">Agregar producto</a>
+                    </li>
+                    {% endif %}
+                    {% if perms.app.view_producto %}
+                    <li>
+                        <a href="{% url 'listar_productos' %}">Listar productos</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}">Cerrar sesión</a>
+                    </li>
+                    <li>
+                        <a href="#">@{{ user.username}}</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'registro' %}">Registrate</a>
+                    </li>
+                    {% endif %}
+                
             </nav>
 
         </div>
 
     </header>
 
+
+
     <div id="contenido">
+
+        {% if messages %}
+            {% for m in messages %}
+                {{m}}
+            {% endfor %}
+        {% endif%}
         {% block contenido %}
         {% endblock %}
     </div>
@@ -61,7 +94,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{% static 'app/js/menu.js' %}"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    {% if messages %}
+        {% for m in messages %}
+        <script>
+            Swal.fire({
+                "title": "Felicitaciones",
+                "text": "{{m}}",
+                "icon": "success",
+            })
+        </script>
+        {% endfor %}
+    {% endif%}
+
+    
     {% block js%}
     {% endblock %}
 

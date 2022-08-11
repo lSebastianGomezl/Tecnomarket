@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -42,6 +46,7 @@ INSTALLED_APPS = [
     'colorfield',
     'django.contrib.humanize',
     'crispy_forms',
+    'rest_framework',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
